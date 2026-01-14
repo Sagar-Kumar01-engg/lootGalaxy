@@ -33,7 +33,7 @@
                 id: 4,
                 name: "Amazon Echo Pop",
                 description: "Amazon Echo Pop| Smart speaker with Alexa and Bluetooth| Full sound, balanced bass, crisp vocals| Purple",
-                price: 449,
+                price: 4499,
                 image: "https://m.media-amazon.com/images/I/81aMuyDLANL._SY450_.jpg", // Leave empty for emoji
                 icon: "",
                 badge: "",
@@ -63,7 +63,7 @@
                 id: 7,
                 name: "IFB 197L 5 Star Direct Cool Single Door Refrigerator",
                 description: "IFB 197L 5 Star Direct Cool Single Door Refrigerator (IFBDC-2235DBSE, Brush Grey, Advanced Inverter Compressor, Extraordinary Storage with Humidity Controller)",
-                price: 649.99,
+                price: 15990,
                 image: "https://m.media-amazon.com/images/I/31kgBZdHKAL._SX342_SY445_QL70_FMwebp_.jpg", // Leave empty for emoji
                 icon: "🧥",
                 badge: "",
@@ -73,7 +73,7 @@
                 id: 8,
                 name: "Panasonic AC",
                 description: "Panasonic 1.5 Ton 3 Star Premium Wi-Fi Inverter Smart Split AC (Matter Enabled, Higher Airflow, Copper Condenser, 7in1 Convertible, True AI, 2-Way, PM 0.1 Filter, CS/CU-SU18AKY3W, White)",
-                price: 1299.99,
+                price: 34430,
                 image: "https://m.media-amazon.com/images/I/61pCN-nzuwL._SX679_.jpg", // Leave empty for emoji
                 icon: "⌚",
                 badge: "New",
@@ -83,7 +83,7 @@
                 id: 9,
                 name: "Men's Shirt",
                 description: "Men’s Premium Long Sleeve Shirt Fabric, Elegant & Comfortable Fit",
-                price: 349.99,
+                price: 222,
                 image: "https://m.media-amazon.com/images/I/71e4At03YUL._SX679_.jpg", // Leave empty for emoji
                 icon: "🎒",
                 badge: "",
@@ -93,7 +93,7 @@
                 id: 10,
                 name: "OnePlus 15R Smartphone",
                 description: "OnePlus 15R | 12GB+256GB | Mint Breeze | World's First Snapdragon® 8 Gen 5 | 7400mAh Battery | Personalised AI | Game-Changing 165Hz Display | IP66 IP68 IP69 & IP69K | 4K 120fps Video",
-                price: 129.99,
+                price: 47998,
                 image: "https://m.media-amazon.com/images/I/41Hmn9tuI1L._SY300_SX300_QL70_FMwebp_.jpg", // Leave empty for emoji
                 icon: "🧣",
                 badge: "Bestseller",
