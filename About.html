@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Loot Galaxy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFFFF;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 5%;
+            background: linear-gradient(135deg, rgba(255, 229, 236, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
+            box-shadow: 0 4px 30px rgba(145, 79, 79, 0.15);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid rgba(145, 79, 79, 0.1);
+        }
+
+        .nav a{
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #914F4F;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-shadow: 2px 2px 4px rgba(145, 79, 79, 0.1);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #914F4F, transparent);
+            border-radius: 2px;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            text-shadow: 3px 3px 8px rgba(145, 79, 79, 0.2);
+        }
+
+        .logo-tagline {
+            text-align: center;
+            margin-top: 0.3rem;
+            font-size: 0.7rem;
+            color: #914F4F;
+            letter-spacing: 4px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #914F4F;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #914F4F;
+        }
+
+        nav a.active {
+            color: #914F4F;
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            height: 70vh;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFC0CB 50%, #FFB3C1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 15%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            left: 40%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            color: #914F4F;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 8rem 5%;
+            background-color: #FFFFFF;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-content {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        .story-image {
+            height: 500px;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFC0CB 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(145, 79, 79, 0.2);
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 1s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section-label {
+            color: #914F4F;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-content h2 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Where to Buy Section */
+        .retailers-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5EC 100%);
+        }
+
+        .retailers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .retailers-container h2 {
+            font-size: 3rem;
+            color: #914F4F;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+        }
+
+        .retailers-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        .retailers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .retailer-card {
+            background: #FFFFFF;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateY(50px);
+            text-decoration: none;
+            display: block;
+        }
+
+        .retailer-card:nth-child(1) {
+            animation: slideUp 0.6s ease-out 0.2s forwards;
+        }
+
+        .retailer-card:nth-child(2) {
+            animation: slideUp 0.6s ease-out 0.4s forwards;
+        }
+
+        .retailer-card:nth-child(3) {
+            animation: slideUp 0.6s ease-out 0.6s forwards;
+        }
+
+        .retailer-card:nth-child(4) {
+            animation: slideUp 0.6s ease-out 0.8s forwards;
+        }
+
+        .retailer-card:nth-child(5) {
+            animation: slideUp 0.6s ease-out 1s forwards;
+        }
+
+        .retailer-card:nth-child(6) {
+            animation: slideUp 0.6s ease-out 1.2s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .retailer-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(145, 79, 79, 0.2);
+        }
+
+        .retailer-logo {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .retailer-card h3 {
+            font-size: 1.8rem;
+            color: #914F4F;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .retailer-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .shop-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #914F4F 0%, #A86060 100%);
+            color: #FFFFFF;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shop-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .shop-button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .shop-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(145, 79, 79, 0.3);
+        }
+
+        /* Availability Info */
+        .availability-section {
+            padding: 8rem 5%;
+            background-color: #FFFFFF;
+        }
+
+        .availability-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .availability-container h2 {
+            font-size: 3rem;
+            color: #914F4F;
+            margin-bottom: 2rem;
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+        }
+
+        .availability-content {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE5EC 100%);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(145, 79, 79, 0.1);
+        }
+
+        .availability-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-box {
+            background: #FFFFFF;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-box h4 {
+            font-size: 1.3rem;
+            color: #914F4F;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .contact-box p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .contact-box a {
+            color: #914F4F;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Parallax Quote Section */
+        .parallax-quote {
+            min-height: 400px;
+            background: linear-gradient(rgba(145, 79, 79, 0.85), rgba(145, 79, 79, 0.85)),
+                linear-gradient(135deg, #FFE5EC 0%, #FFC0CB 100%);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 5%;
+        }
+
+        .quote-content {
+            max-width: 800px;
+            color: #FFFFFF;
+        }
+
+        .quote-content blockquote {
+            font-size: 2.5rem;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .quote-content cite {
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #914F4F 0%, #A86060 100%);
+            color: #FFFFFF;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-family: 'Georgia', serif;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            transform: translateX(5px);
+            color: #FFE5EC;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            color: #FFFFFF;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+
+        .email a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-button {
+            background-color: #FFFFFF;
+            color: #914F4F;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-button:hover {
+            background-color: #FFE5EC;
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+        }
+
+        .email {
+            word-wrap: break-word;
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .story-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .story-image {
+                order: -1;
+            }
+
+            .retailers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .story-content h2,
+            .retailers-container h2,
+            .availability-container h2 {
+                font-size: 2rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .retailers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-content blockquote {
+                font-size: 1.8rem;
+            }
+
+            .availability-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav">
+            <a href="landing_page.html"><div class="logo">Loot Galaxy</div>
+            <div class="logo-tagline">CURATED EXCELLENCE</div></a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero-content">
+            <h1>About Loot Galaxy</h1>
+            <p>Curating quality products across all categories from trusted retailers</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-container">
+            <div class="story-content">
+                <div class="section-label">Who We Are</div>
+                <h2>Your Gateway to Premium Products</h2>
+                <p>Loot Galaxy is a carefully curated marketplace showcasing premium products across all categories—from
+                    fashion and beauty to electronics, toys, home goods, and beyond. We don't sell directly—instead, we
+                    showcase exceptional products and connect you with trusted retailers where you can purchase them.
+                </p>
+                <p>Think of us as your personal shopping guide, bringing together the finest products from established
+                    brands, authorized dealers, and premium e-commerce platforms. Each item in our collection has been
+                    handpicked for its quality, innovation, and exceptional value.</p>
+                <p>Whether you're shopping for designer apparel, cutting-edge tech gadgets, premium beauty products,
+                    educational toys, or home essentials, we make it easy to discover and purchase quality items from
+                    the retailers who stock them.</p>
+            </div>
+            <div class="story-image">
+                🛍️
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to Buy Section -->
+    <section class="retailers-section">
+        <div class="retailers-container">
+            <h2>Where to Shop</h2>
+            <p class="retailers-subtitle">Our curated products are available at these trusted retailers</p>
+            <div class="retailers-grid">
+                <a href="https://www.amazon.com" target="_blank" class="retailer-card">
+                    <div class="retailer-logo">📦</div>
+                    <h3>Amazon</h3>
+                    <p>World's largest online marketplace for everything from electronics to home goods.</p>
+                    <span class="shop-button">Visit Store →</span>
+                </a>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Availability Info -->
+    <section class="availability-section">
+        <div class="availability-container">
+            <h2>Product Availability</h2>
+            <div class="availability-content">
+                <p>All products featured on Loot Galaxy are curated from our partner retailers. When you click on a
+                    product, you'll be directed to the retailer's website where you can view current pricing,
+                    availability, and make your purchase securely.</p>
+                <p>Prices and stock levels are managed by each individual retailer and may vary. We recommend checking
+                    with the retailer directly for the most up-to-date information.</p>
+
+                <div class="contact-options">
+                    <div class="contact-box">
+                        <h4>📧 General Inquiries</h4>
+                        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=shykick08@gmail.com"
+                        target="_blank">shykick08@gmail.com</a></p>
+                    </div>
+                    <div class="contact-box">
+                        <h4>🤝 Partner With Us</h4>
+                        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=cs-reply@amazon.com"
+                        target="_blank">cs-reply@amazon.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Quote Section -->
+    <section class="parallax-quote">
+        <div class="quote-content">
+            <blockquote>"Elegance is the only beauty that never fades."</blockquote>
+            <cite>— Audrey Hepburn</cite>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1BxAp2tn4W/" title="Facebook"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/loot_galaxyy?igsh=bnExNnl1ZHgyOTRr" title="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/LootGalaxy360" title="Telegram"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p class="email"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=shykick08@gmail.com"
+                        target="_blank">📧 shykick08@gmail.com</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Stay Updated</h3>
+                <p style="margin-bottom: 1.5rem;">Subscribe for curated collections and exclusive retailer offers</p>
+                <form class="newsletter-form">
+                    <input type="email" name="user_email" class="newsletter-input" placeholder="Your email address"
+                        required>
+                    <input type="hidden" name="time" value="">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+
+                </form>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="landing_page.html">Home</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Loot Galaxy. A curated product discovery platform. Products sold by partner retailers.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("sjhJrfG1UceXPE_RR"); // your public key
+        })();
+
+        document.querySelector(".newsletter-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Set timestamp
+            this.querySelector('input[name="time"]').value = new Date().toLocaleString();
+
+            // Send via EmailJS
+            emailjs.sendForm("service_ibtxihx", "template_j2gs9gs", this)
+                .then(() => {
+                    // Custom notification
+                    const notification = document.createElement('div');
+                    notification.textContent = '✓ Successfully subscribed!';
+                    notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: #914F4F;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 10px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          z-index: 10000;
+          animation: slideInRight 0.5s ease-out;
+        `;
+                    document.body.appendChild(notification);
+                    setTimeout(() => {
+                        notification.style.animation = 'slideOutRight 0.5s ease-out';
+                        setTimeout(() => notification.remove(), 500);
+                    }, 3000);
+
+                    this.reset();
+                })
+                .catch(error => {
+                    alert("Oops... something went wrong.\n" + JSON.stringify(error));
+                });
+        });
+    </script>
+</body>
+
+</html>
